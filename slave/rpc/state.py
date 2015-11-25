@@ -2,6 +2,20 @@ import rpyc
 import psutil
 import thread
 import time
+import logging
+
+logging.basicConfig(level=logging.INFO,
+                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                datefmt='%a, %d %b %Y %H:%M:%S',
+                filename='logs/master.log',
+                filemode='w')
+
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
+
 
 class SlaveRPC:
     #TODO read from configuration file
@@ -10,6 +24,7 @@ class SlaveRPC:
         self.connection = rpyc.connect(ip, port)
         self.server = self.connection.root
         self.server.register(slave_id)
+        logging.info("Connecting master at %s:%s..."%(ip, port))
 
     def heartbeat(self, interval=3):
         while True:
@@ -30,6 +45,5 @@ class SlaveRPC:
     def close(self):
         self.connection.close()
 
-test = SlaveRPC(slave_id="Jeff-PC")
-test.monitor()
+
 

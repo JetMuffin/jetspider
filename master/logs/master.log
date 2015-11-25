@@ -1,0 +1,16 @@
+Wed, 25 Nov 2015 17:29:15 metrics.py[line:34] INFO Start master on port 9999...
+Wed, 25 Nov 2015 17:29:15 server.py[line:233] INFO server started on [0.0.0.0]:9999
+Wed, 25 Nov 2015 17:29:18 server.py[line:144] INFO accepted 127.0.0.1:62424
+Wed, 25 Nov 2015 17:29:18 server.py[line:191] INFO welcome [127.0.0.1]:62424
+Wed, 25 Nov 2015 17:29:18 server.py[line:200] INFO goodbye [127.0.0.1]:62424
+Wed, 25 Nov 2015 17:29:47 server.py[line:144] INFO accepted 127.0.0.1:62427
+Wed, 25 Nov 2015 17:29:47 server.py[line:191] INFO welcome [127.0.0.1]:62427
+Wed, 25 Nov 2015 17:29:47 server.py[line:200] INFO goodbye [127.0.0.1]:62427
+Wed, 25 Nov 2015 17:30:01 server.py[line:144] INFO accepted 127.0.0.1:62432
+Wed, 25 Nov 2015 17:30:01 server.py[line:191] INFO welcome [127.0.0.1]:62432
+Wed, 25 Nov 2015 17:30:02 metrics.py[line:29] INFO Received heartbeat from slave jeff : {'mem_used': '6573MB', 'mem_percent': '62.9%', 'cpu': '7.0%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 17:30:06 metrics.py[line:29] INFO Received heartbeat from slave jeff : {'mem_used': '6574MB', 'mem_percent': '62.9%', 'cpu': '17.5%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 17:30:08 server.py[line:246] WARNING keyboard interrupt!
+Wed, 25 Nov 2015 17:30:08 server.py[line:248] INFO server has terminated
+Wed, 25 Nov 2015 17:30:08 server.py[line:111] INFO listener closed
+Wed, 25 Nov 2015 17:30:08 server.py[line:200] INFO goodbye [127.0.0.1]:62432
