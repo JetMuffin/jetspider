@@ -43,5 +43,3 @@ class SpiderQueue(BaseQueue):
         if data:
             return data
 
-    def empty(self):
-        return self.__len__() == 0

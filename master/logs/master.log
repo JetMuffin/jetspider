@@ -1,16 +1,115 @@
-Wed, 25 Nov 2015 17:29:15 metrics.py[line:34] INFO Start master on port 9999...
-Wed, 25 Nov 2015 17:29:15 server.py[line:233] INFO server started on [0.0.0.0]:9999
-Wed, 25 Nov 2015 17:29:18 server.py[line:144] INFO accepted 127.0.0.1:62424
-Wed, 25 Nov 2015 17:29:18 server.py[line:191] INFO welcome [127.0.0.1]:62424
-Wed, 25 Nov 2015 17:29:18 server.py[line:200] INFO goodbye [127.0.0.1]:62424
-Wed, 25 Nov 2015 17:29:47 server.py[line:144] INFO accepted 127.0.0.1:62427
-Wed, 25 Nov 2015 17:29:47 server.py[line:191] INFO welcome [127.0.0.1]:62427
-Wed, 25 Nov 2015 17:29:47 server.py[line:200] INFO goodbye [127.0.0.1]:62427
-Wed, 25 Nov 2015 17:30:01 server.py[line:144] INFO accepted 127.0.0.1:62432
-Wed, 25 Nov 2015 17:30:01 server.py[line:191] INFO welcome [127.0.0.1]:62432
-Wed, 25 Nov 2015 17:30:02 metrics.py[line:29] INFO Received heartbeat from slave jeff : {'mem_used': '6573MB', 'mem_percent': '62.9%', 'cpu': '7.0%', 'mem_total': '8192MB'}
-Wed, 25 Nov 2015 17:30:06 metrics.py[line:29] INFO Received heartbeat from slave jeff : {'mem_used': '6574MB', 'mem_percent': '62.9%', 'cpu': '17.5%', 'mem_total': '8192MB'}
-Wed, 25 Nov 2015 17:30:08 server.py[line:246] WARNING keyboard interrupt!
-Wed, 25 Nov 2015 17:30:08 server.py[line:248] INFO server has terminated
-Wed, 25 Nov 2015 17:30:08 server.py[line:111] INFO listener closed
-Wed, 25 Nov 2015 17:30:08 server.py[line:200] INFO goodbye [127.0.0.1]:62432
+Wed, 25 Nov 2015 19:19:30 metrics.py[line:37] INFO Start master on port 9999...
+Wed, 25 Nov 2015 19:19:30 server.py[line:233] INFO server started on [0.0.0.0]:9999
+Wed, 25 Nov 2015 19:19:50 server.py[line:144] INFO accepted 127.0.0.1:64600
+Wed, 25 Nov 2015 19:19:50 server.py[line:191] INFO welcome [127.0.0.1]:64600
+Wed, 25 Nov 2015 19:19:51 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7382MB', 'mem_percent': '59.8%', 'cpu': '4.5%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:19:55 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7382MB', 'mem_percent': '59.8%', 'cpu': '4.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:19:57 server.py[line:200] INFO goodbye [127.0.0.1]:64600
+Wed, 25 Nov 2015 19:23:08 server.py[line:144] INFO accepted 127.0.0.1:64731
+Wed, 25 Nov 2015 19:23:08 server.py[line:191] INFO welcome [127.0.0.1]:64731
+Wed, 25 Nov 2015 19:23:09 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7537MB', 'mem_percent': '61.7%', 'cpu': '4.0%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:23:12 server.py[line:200] INFO goodbye [127.0.0.1]:64731
+Wed, 25 Nov 2015 19:23:34 server.py[line:144] INFO accepted 127.0.0.1:64732
+Wed, 25 Nov 2015 19:23:34 server.py[line:191] INFO welcome [127.0.0.1]:64732
+Wed, 25 Nov 2015 19:23:35 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7543MB', 'mem_percent': '61.8%', 'cpu': '4.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:23:39 server.py[line:200] INFO goodbye [127.0.0.1]:64732
+Wed, 25 Nov 2015 19:23:53 server.py[line:144] INFO accepted 127.0.0.1:64735
+Wed, 25 Nov 2015 19:23:53 server.py[line:191] INFO welcome [127.0.0.1]:64735
+Wed, 25 Nov 2015 19:23:54 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7543MB', 'mem_percent': '61.8%', 'cpu': '4.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:23:57 server.py[line:200] INFO goodbye [127.0.0.1]:64735
+Wed, 25 Nov 2015 19:24:19 server.py[line:144] INFO accepted 127.0.0.1:64746
+Wed, 25 Nov 2015 19:24:19 server.py[line:191] INFO welcome [127.0.0.1]:64746
+Wed, 25 Nov 2015 19:24:20 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7539MB', 'mem_percent': '61.8%', 'cpu': '3.3%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:24:22 server.py[line:200] INFO goodbye [127.0.0.1]:64746
+Wed, 25 Nov 2015 19:24:48 server.py[line:144] INFO accepted 127.0.0.1:64752
+Wed, 25 Nov 2015 19:24:48 server.py[line:191] INFO welcome [127.0.0.1]:64752
+Wed, 25 Nov 2015 19:24:49 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7558MB', 'mem_percent': '61.9%', 'cpu': '5.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:24:50 server.py[line:200] INFO goodbye [127.0.0.1]:64752
+Wed, 25 Nov 2015 19:24:59 server.py[line:144] INFO accepted 127.0.0.1:64753
+Wed, 25 Nov 2015 19:24:59 server.py[line:191] INFO welcome [127.0.0.1]:64753
+Wed, 25 Nov 2015 19:25:00 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7560MB', 'mem_percent': '61.9%', 'cpu': '5.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:25:03 server.py[line:200] INFO goodbye [127.0.0.1]:64753
+Wed, 25 Nov 2015 19:25:17 server.py[line:144] INFO accepted 127.0.0.1:64758
+Wed, 25 Nov 2015 19:25:17 server.py[line:191] INFO welcome [127.0.0.1]:64758
+Wed, 25 Nov 2015 19:25:18 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7562MB', 'mem_percent': '61.9%', 'cpu': '4.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:25:19 server.py[line:200] INFO goodbye [127.0.0.1]:64758
+Wed, 25 Nov 2015 19:25:25 server.py[line:144] INFO accepted 127.0.0.1:64759
+Wed, 25 Nov 2015 19:25:25 server.py[line:191] INFO welcome [127.0.0.1]:64759
+Wed, 25 Nov 2015 19:25:26 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7565MB', 'mem_percent': '62.0%', 'cpu': '4.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:25:26 server.py[line:200] INFO goodbye [127.0.0.1]:64759
+Wed, 25 Nov 2015 19:25:44 server.py[line:144] INFO accepted 127.0.0.1:64760
+Wed, 25 Nov 2015 19:25:44 server.py[line:191] INFO welcome [127.0.0.1]:64760
+Wed, 25 Nov 2015 19:25:45 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7567MB', 'mem_percent': '62.0%', 'cpu': '4.5%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:25:46 server.py[line:200] INFO goodbye [127.0.0.1]:64760
+Wed, 25 Nov 2015 19:26:35 server.py[line:144] INFO accepted 127.0.0.1:64767
+Wed, 25 Nov 2015 19:26:35 server.py[line:191] INFO welcome [127.0.0.1]:64767
+Wed, 25 Nov 2015 19:26:36 metrics.py[line:29] INFO Received heartbeat from slave slave : {'mem_used': '7572MB', 'mem_percent': '62.0%', 'cpu': '7.0%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 19:26:37 server.py[line:200] INFO goodbye [127.0.0.1]:64767
+Wed, 25 Nov 2015 20:24:56 server.py[line:144] INFO accepted 127.0.0.1:50339
+Wed, 25 Nov 2015 20:24:56 server.py[line:191] INFO welcome [127.0.0.1]:50339
+Wed, 25 Nov 2015 20:24:57 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7505MB', 'mem_percent': '65.6%', 'cpu': '26.1%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:01 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7504MB', 'mem_percent': '65.6%', 'cpu': '23.6%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:05 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7507MB', 'mem_percent': '65.7%', 'cpu': '6.3%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:09 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7506MB', 'mem_percent': '65.6%', 'cpu': '6.5%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:13 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7506MB', 'mem_percent': '65.6%', 'cpu': '7.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:17 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7505MB', 'mem_percent': '65.6%', 'cpu': '16.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:25:17 server.py[line:200] INFO goodbye [127.0.0.1]:50339
+Wed, 25 Nov 2015 20:34:34 server.py[line:144] INFO accepted 127.0.0.1:50401
+Wed, 25 Nov 2015 20:34:34 server.py[line:191] INFO welcome [127.0.0.1]:50401
+Wed, 25 Nov 2015 20:34:35 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7542MB', 'mem_percent': '65.9%', 'cpu': '16.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:34:39 server.py[line:200] INFO goodbye [127.0.0.1]:50401
+Wed, 25 Nov 2015 20:34:44 server.py[line:144] INFO accepted 127.0.0.1:50402
+Wed, 25 Nov 2015 20:34:44 server.py[line:191] INFO welcome [127.0.0.1]:50402
+Wed, 25 Nov 2015 20:34:45 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7544MB', 'mem_percent': '65.9%', 'cpu': '15.0%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:34:49 server.py[line:200] INFO goodbye [127.0.0.1]:50402
+Wed, 25 Nov 2015 20:35:04 server.py[line:144] INFO accepted 127.0.0.1:50403
+Wed, 25 Nov 2015 20:35:04 server.py[line:191] INFO welcome [127.0.0.1]:50403
+Wed, 25 Nov 2015 20:35:05 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7543MB', 'mem_percent': '65.9%', 'cpu': '12.5%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:35:07 server.py[line:200] INFO goodbye [127.0.0.1]:50403
+Wed, 25 Nov 2015 20:35:15 server.py[line:144] INFO accepted 127.0.0.1:50404
+Wed, 25 Nov 2015 20:35:15 server.py[line:191] INFO welcome [127.0.0.1]:50404
+Wed, 25 Nov 2015 20:35:16 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7544MB', 'mem_percent': '65.9%', 'cpu': '16.6%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:35:16 server.py[line:200] INFO goodbye [127.0.0.1]:50404
+Wed, 25 Nov 2015 20:36:42 server.py[line:144] INFO accepted 127.0.0.1:50418
+Wed, 25 Nov 2015 20:36:42 server.py[line:191] INFO welcome [127.0.0.1]:50418
+Wed, 25 Nov 2015 20:36:43 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7548MB', 'mem_percent': '65.9%', 'cpu': '11.0%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:36:47 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7549MB', 'mem_percent': '65.9%', 'cpu': '7.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:36:51 metrics.py[line:29] INFO Received heartbeat from slave Jeff : {'mem_used': '7548MB', 'mem_percent': '65.9%', 'cpu': '5.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:36:53 server.py[line:200] INFO goodbye [127.0.0.1]:50418
+Wed, 25 Nov 2015 20:55:43 server.py[line:144] INFO accepted 127.0.0.1:52025
+Wed, 25 Nov 2015 20:55:43 server.py[line:191] INFO welcome [127.0.0.1]:52025
+Wed, 25 Nov 2015 20:55:44 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7873MB', 'mem_percent': '70.3%', 'cpu': '15.8%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:55:48 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7877MB', 'mem_percent': '70.3%', 'cpu': '10.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:55:49 server.py[line:200] INFO goodbye [127.0.0.1]:52025
+Wed, 25 Nov 2015 20:56:23 server.py[line:144] INFO accepted 127.0.0.1:52030
+Wed, 25 Nov 2015 20:56:23 server.py[line:191] INFO welcome [127.0.0.1]:52030
+Wed, 25 Nov 2015 20:56:24 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7898MB', 'mem_percent': '70.6%', 'cpu': '14.8%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:56:28 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7894MB', 'mem_percent': '70.5%', 'cpu': '9.2%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:56:30 server.py[line:200] INFO goodbye [127.0.0.1]:52030
+Wed, 25 Nov 2015 20:56:43 server.py[line:144] INFO accepted 127.0.0.1:52033
+Wed, 25 Nov 2015 20:56:43 server.py[line:191] INFO welcome [127.0.0.1]:52033
+Wed, 25 Nov 2015 20:56:44 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7899MB', 'mem_percent': '70.6%', 'cpu': '14.4%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:56:45 server.py[line:200] INFO goodbye [127.0.0.1]:52033
+Wed, 25 Nov 2015 20:59:53 server.py[line:144] INFO accepted 127.0.0.1:52425
+Wed, 25 Nov 2015 20:59:53 server.py[line:191] INFO welcome [127.0.0.1]:52425
+Wed, 25 Nov 2015 20:59:54 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7897MB', 'mem_percent': '70.7%', 'cpu': '10.9%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 20:59:58 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7897MB', 'mem_percent': '70.7%', 'cpu': '13.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 21:00:02 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7895MB', 'mem_percent': '70.7%', 'cpu': '5.8%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 21:00:04 server.py[line:200] INFO goodbye [127.0.0.1]:52425
+Wed, 25 Nov 2015 21:00:19 server.py[line:144] INFO accepted 127.0.0.1:52436
+Wed, 25 Nov 2015 21:00:19 server.py[line:191] INFO welcome [127.0.0.1]:52436
+Wed, 25 Nov 2015 21:00:20 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7896MB', 'mem_percent': '70.7%', 'cpu': '21.1%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 21:00:23 server.py[line:200] INFO goodbye [127.0.0.1]:52436
+Wed, 25 Nov 2015 21:01:43 server.py[line:144] INFO accepted 127.0.0.1:52461
+Wed, 25 Nov 2015 21:01:43 server.py[line:191] INFO welcome [127.0.0.1]:52461
+Wed, 25 Nov 2015 21:01:44 metrics.py[line:29] INFO Received heartbeat from slave kew : {'mem_used': '7943MB', 'mem_percent': '71.2%', 'cpu': '12.7%', 'mem_total': '8192MB'}
+Wed, 25 Nov 2015 21:01:47 server.py[line:200] INFO goodbye [127.0.0.1]:52461
+Wed, 25 Nov 2015 21:01:53 server.py[line:144] INFO accepted 127.0.0.1:52462
+Wed, 25 Nov 2015 21:01:53 server.py[line:191] INFO welcome [127.0.0.1]:52462
+Wed, 25 Nov 2015 21:01:53 server.py[line:200] INFO goodbye [127.0.0.1]:52462
+Wed, 25 Nov 2015 21:03:07 server.py[line:144] INFO accepted 127.0.0.1:52471
+Wed, 25 Nov 2015 21:03:07 server.py[line:191] INFO welcome [127.0.0.1]:52471
+Wed, 25 Nov 2015 21:03:07 server.py[line:200] INFO goodbye [127.0.0.1]:52471
+Wed, 25 Nov 2015 21:03:59 server.py[line:246] WARNING keyboard interrupt!
+Wed, 25 Nov 2015 21:03:59 server.py[line:248] INFO server has terminated
+Wed, 25 Nov 2015 21:03:59 server.py[line:111] INFO listener closed

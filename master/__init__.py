@@ -7,4 +7,5 @@
 #
 
 
+import rpc
 __version__ = "0.1.0"

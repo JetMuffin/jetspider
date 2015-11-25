@@ -2,31 +2,33 @@ from rpyc import Service
 from rpyc.utils.server import ThreadedServer
 import logging
 
-"""
-TODO logging
-"""
-logging.basicConfig(level=logging.INFO,
-                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                datefmt='%a, %d %b %Y %H:%M:%S',
-                filename='logs/master.log',
-                filemode='w')
 
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-console.setFormatter(formatter)
-logging.getLogger('').addHandler(console)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s', datefmt='%H:%M:%S')
 
 slaves = {}
+task_info = {
+    "redis_ip": "127.0.0.1",
+    "redis_port": 6379,
+    "start_url": "http://jetmuffin.github.io",
+    "allowed_domain": "jetmuffin.github.io",
+    "queue_key": "spider_url",
+    "dupefilter_key": "spider_df"
+}
+
+
 
 class MasterRPCService(Service):
     def exposed_register(self, slave_id):
         slaves[slave_id] = ""
-        print "Slave registered whith id %s"%slave_id
+        logging.info("Slave registered whith id %s"%slave_id)
+        return task_info
 
     def exposed_heartbeat(self, slave_id, slave_state):
         slaves[slave_id] = slave_state
         logging.info("Received heartbeat from slave %s : %s"%(slave_id, slave_state))
+
+    def exposed_fetch(self, slave_id, url):
+        logging.info("Slave %s succefull fetch url : %s"%(slave_id, url))
 
 class MasterRPC:
     def __init__(self, port=9999, auto_register=False):

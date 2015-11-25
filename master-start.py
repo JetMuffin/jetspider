@@ -1,5 +1,6 @@
-from rpc.metrics import MasterRPC
+from master.rpc.metrics import MasterRPC
 import sys
+import logging
 
 def usage():
     print "<Usage>: python start.py"
