@@ -1,5 +1,7 @@
 from pymongo import MongoClient
+from bson import ObjectId
 import traceback
+
 
 class MongodbPipeline(object):
     """
@@ -16,28 +18,49 @@ class MongodbPipeline(object):
             client = MongoClient(self.mongo_server, self.mongo_port)
             self.db = client[self.mongo_db]
         except Exception as e:
-            print "ERROR(SingleMongodbPipeline): %s"%(str(e),)
+            print "ERROR(SingleMongodbPipeline): %s" % (str(e),)
             traceback.print_exc()
 
-    @classmethod
-    def from_crawler(cls, crawler):
-        cls.mongo_server = crawler.settings.get('MONGODB_SERVER', 'localhost')
-        cls.mongo_port = crawler.settings.getint('MONGODB_PORT', 27017)
-        cls.mongo_db = crawler.settings.get('MONGODB_DB', 'spider_db')
-        pipe = cls()
-        pipe.crawler = crawler
-        return pipe
-
-    def process_item(self, item):
-        page_detail = {
-            'title': item.get('title'),
-            'content': item.get('content'),
-            'href': item.get('href'),
-            'links': item.get('links')
-        }
-
-        result = self.db['page_detail'].insert(page_detail)
+    def insert(self, item, table):
+        """
+            insert an item into table
+            :param item:
+            :param table:
+        """
+        result = self.db[table].insert(item)
         item["mongo_id"] = str(result)
-
         return item
+
+    def find(self, table, object_id):
+        """
+            use object_id to find item
+            :param table:
+            :param object_id:
+        """
+        item = self.db[table].find_one({'_id': ObjectId(object_id)})
+        return item
+
+    def update(self, table, object_id, new_item):
+        """
+            update item by object_id
+            :param table:
+            :param object_id:
+            :param new_item:
+        """
+        self.db[table].update({'_id': ObjectId(object_id)}, {"$set": new_item})
+
+    def delete(self, table, object_id):
+        """
+            delete item by object_id
+            :param table:
+            :param object_id:
+        """
+        self.db[table].delete_one({'_id': ObjectId(object_id)})
+
+    def remove(self, table):
+        """
+            remove all items of table
+            :param table:
+        """
+        self.db[table].remove()
 

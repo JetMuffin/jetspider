@@ -3,7 +3,7 @@ import re
 from optparse import OptionParser
 
 
-from slave.mq.executors import SpiderExecutor
+from slave.mq.executors import SpiderExecutor, ParserExecutor
 
 SLAVE_TYPE = ["spider", "parser"]
 def error(msg):
@@ -39,5 +39,6 @@ if __name__ == "__main__":
         executor.fetch()
 
     elif options.type == "parser":
-        pass
+        executor = ParserExecutor(options.master, options.name)
+        executor.collect()
 

@@ -6,13 +6,15 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(mess
 
 slaves = {}
 task_info = {
-    "redis_ip": "121.248.199.35",
+    "redis_ip": "127.0.0.1",
     "redis_port": 6379,
     "start_url": "http://jetmuffin.github.io",
     "allowed_domain": "jetmuffin.github.io",
-    "queue_key": "spider_url",
-    "dupefilter_key": "spider_df",
-    "db_ip": "121.248.199.35",
+    "spider_queue_key": "spider_url",
+    "spider_dupefilter_key": "spider_df",
+    "spider_stored_table": "page_detail",
+    "processor_queue_key": "processor_task",
+    "db_ip": "127.0.0.1",
     "db_port": 27017,
     "db_name": "spider_db"
 }

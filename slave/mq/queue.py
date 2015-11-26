@@ -29,7 +29,7 @@ class BaseQueue(object):
         self.server.delete(self.key)
 
 
-class SpiderQueue(BaseQueue):
+class FIFOQueue(BaseQueue):
     """FIFO queue"""
 
     def __len__(self):
