@@ -5,8 +5,9 @@ import time
 
 from dupefilter import SimpleDupefilter
 from queue import SpiderQueue
+from slave.pipelines.mongodb import MongodbPipeline
 from slave.rpc.state import SlaveRPC
-from slave.spiders.hhu_crawler import HHUCrawler
+from slave.spiders.crawlers import SimpleCrawler
 
 
 class Executor(object):
@@ -34,8 +35,9 @@ class SpiderExecutor(Executor):
     def fetch(self):
         """execute task"""
         queue = SpiderQueue(self.server, self.task_info['queue_key'])
-        crawler = HHUCrawler(self.task_info['start_url'], self.task_info['allowed_domain'])
+        crawler = SimpleCrawler(self.task_info['start_url'], self.task_info['allowed_domain'])
         dupefilter = SimpleDupefilter(self.server, self.task_info['dupefilter_key'])
+        pipeline = MongodbPipeline(self.task_info['db_ip'], self.task_info['db_port'], self.task_info['db_name'])
 
         queue.push(self.task_info['start_url'])
         while True:
@@ -45,15 +47,20 @@ class SpiderExecutor(Executor):
 
                 # if crawler successful fetch the content
                 if crawler.success:
-                    next_urls = crawler.parse()
+                    item = crawler.parse()
+                    next_urls = item.get('links')
                     next_urls_count = 0
                     for next_url in next_urls:
                         if not dupefilter.exists(next_url):
                             queue.push(next_url)
                             next_urls_count += 1
 
+                    # print fetch infomation
                     print "Crawler fetched %s and get %d urls" % (current_url, next_urls_count)
-                    self.rpc_proxy.server.fetch(self.name, current_url)
+                    self.rpc_proxy.server.message(self.name, "Success fetched url %s."%current_url)
+
+                    item = pipeline.process_item(item)
+                    self.rpc_proxy.server.message(self.name, "Stored url %s with ID %s."%(current_url, item.get('mongo_id')))
 
             else:
                 print "Wait for tasks..."
