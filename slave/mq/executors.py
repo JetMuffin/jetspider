@@ -42,7 +42,7 @@ class SpiderExecutor(Executor):
     def fetch(self):
 
         spider_queue = FIFOQueue(self.server, self.task_info['spider_queue_key'])
-        task_queue = FIFOQueue(self.server, self.task_info['processor_queue_key'])
+        task_queue = FIFOQueue(self.server, self.task_info['parser_queue_key'])
         crawler = SimpleCrawler(self.task_info['start_url'], self.task_info['allowed_domain'])
         dupefilter = SimpleDupefilter(self.server, self.task_info['spider_dupefilter_key'])
         pipeline = MongodbPipeline(self.task_info['db_ip'], self.task_info['db_port'], self.task_info['db_name'])
@@ -84,7 +84,7 @@ class SpiderExecutor(Executor):
 class ParserExecutor(Executor):
 
     def collect(self):
-        queue = FIFOQueue(self.server, self.task_info['processor_queue_key'])
+        queue = FIFOQueue(self.server, self.task_info['parser_queue_key'])
         pipeline = MongodbPipeline(self.task_info['db_ip'], self.task_info['db_port'], self.task_info['db_name'])
         parser = JiebaParser()
 
@@ -94,8 +94,15 @@ class ParserExecutor(Executor):
                 page_id = queue.pop()
                 item = pipeline.find(self.task_info['spider_stored_table'], page_id)
                 terms = parser.segment(item['content'])
-                print terms
-                # TODO connect to master
+                terms_count = len(terms)
+
+                # update item information to db
+                item['terms'] = terms
+                pipeline.update(self.task_info["spider_stored_table"], page_id, item)
+
+                # connect to master
+                self.rpc_proxy.server.message(self.name, "Parse page[%s] and get %d terms" % (page_id, terms_count))
+                print("Parse page[%s] and get %d terms" % (page_id, terms_count))
 
             else:
                 print "Wait for tasks..."

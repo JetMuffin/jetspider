@@ -2,18 +2,29 @@ from rpyc import Service
 from rpyc.utils.server import ThreadedServer
 import logging
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s', datefmt='%H:%M:%S')
+logging.basicConfig(level=logging.INFO,
+                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                datefmt='%a, %d %b %Y %H:%M:%S',
+                filename='logs/master.log',
+                filemode='w')
+
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
 
 slaves = {}
 task_info = {
     "redis_ip": "127.0.0.1",
     "redis_port": 6379,
-    "start_url": "http://jetmuffin.github.io",
-    "allowed_domain": "jetmuffin.github.io",
+    "start_url": "http://www.sunzequn.com",
+    "allowed_domain": "www.sunzequn.com",
     "spider_queue_key": "spider_url",
     "spider_dupefilter_key": "spider_df",
     "spider_stored_table": "page_detail",
-    "processor_queue_key": "processor_task",
+    "parser_queue_key": "parser_task",
+    "reverse_index_table": "reverse_index",
     "db_ip": "127.0.0.1",
     "db_port": 27017,
     "db_name": "spider_db"
