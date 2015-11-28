@@ -1,5 +1,6 @@
 import redis
-from mq.executors import Executor
+
+from slave.executors import Executor
 from spiders.crawlers import HHUCrawler
 
 start_url = "http://jetmuffin.github.io"

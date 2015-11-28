@@ -1,4 +1,4 @@
-from master.rpc.metrics import MasterRPC
+from master.comm.rpc import MasterRPC
 import sys
 import logging
 

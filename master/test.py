@@ -1,3 +1,3 @@
-from rpc.metrics import MasterRPC
+from comm.rpc import MasterRPC
 
 test = MasterRPC()

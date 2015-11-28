@@ -28,7 +28,7 @@ class JiebaParser(BaseParser):
     """
 
     def segment(self, content, cut_all=True):
-        word_list = list(jieba.cut(content), cut_all)
+        word_list = list(jieba.cut(content, cut_all))
 
         # use dict to count term frequency
         # TODO take position into account
@@ -50,10 +50,10 @@ class JiebaParser(BaseParser):
 
         return terms
 
-test = JiebaParser()
-print '的' in test.stopwords
-
-setence = "Sloriac的个人博客 当前网页 不支持 你正在使用的浏览器. 为了正常的访问, 请 升级你的浏览器. Sloriac的个人博客 所谓成就，就是在喜欢的领域达到一定的境界"
-terms = test.segment(setence)
-for term in terms:
-    print term['term'], term['tf']
+# test = JiebaParser()
+# print '的' in test.stopwords
+#
+# setence = "Sloriac的个人博客 当前网页 不支持 你正在使用的浏览器. 为了正常的访问, 请 升级你的浏览器. Sloriac的个人博客 所谓成就，就是在喜欢的领域达到一定的境界"
+# terms = test.segment(setence)
+# for term in terms:
+#     print term['term'], term['tf']

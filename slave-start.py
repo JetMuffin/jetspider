@@ -1,9 +1,8 @@
-import sys
 import re
+import sys
 from optparse import OptionParser
 
-
-from slave.mq.executors import SpiderExecutor, ParserExecutor
+from slave.executors import SpiderExecutor, ParserExecutor
 
 SLAVE_TYPE = ["spider", "parser"]
 def error(msg):
