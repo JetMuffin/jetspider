@@ -3,6 +3,7 @@ import sys
 from optparse import OptionParser
 
 from slave.executors import SpiderExecutor, ParserExecutor
+from slave.comm.rpc import SlaveRPC
 
 SLAVE_TYPE = ["spider", "parser"]
 def error(msg):
@@ -32,12 +33,22 @@ if __name__ == "__main__":
     if options.type not in SLAVE_TYPE:
         error("Wrong type: your slave's type must be spider or parser.")
 
-    """ Run executor """
-    if options.type == "spider":
-        executor = SpiderExecutor(options.master, options.name)
-        executor.fetch()
+    (master_host, master_port) = options.master.split(':')
 
-    elif options.type == "parser":
-        executor = ParserExecutor(options.master, options.name)
-        executor.collect()
+    """ Register to master """
+    slave = {
+        "name": options.name,
+        "type": options.type
+    }
+    rpc_proxy = SlaveRPC(master_host, master_port)
+    if rpc_proxy.register(slave):
+
+        """ Monitor heartbeat """
+        # TODO 将monitor改为后台进程
+        try:
+            while True:
+                rpc_proxy.heartbeat(slave, interval=5)
+        except KeyboardInterrupt:
+            rpc_proxy.disconnect(slave)
+
 

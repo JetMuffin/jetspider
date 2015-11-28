@@ -16,10 +16,6 @@ class Executor(object):
         self.name = name
         self.master_ip, self.master_port = master_address.split(":")
 
-        """ Register to master """
-        self.rpc_proxy = SlaveRPC(self.name, self.master_ip, self.master_port)
-        self.task_info = self.rpc_proxy.server.register(self.name)
-
     def run(self):
         raise NotImplementedError
 

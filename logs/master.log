@@ -1,4 +1,12 @@
-Sat, 28 Nov 2015 21:27:27 server.py[line:233] INFO server started on [0.0.0.0]:8989
-Sat, 28 Nov 2015 21:27:36 server.py[line:246] WARNING keyboard interrupt!
-Sat, 28 Nov 2015 21:27:36 server.py[line:248] INFO server has terminated
-Sat, 28 Nov 2015 21:27:36 server.py[line:111] INFO listener closed
+Sat, 28 Nov 2015 23:24:49 rpc.py[line:55] INFO Start master on port 8780...
+Sat, 28 Nov 2015 23:24:49 server.py[line:233] INFO server started on [0.0.0.0]:8780
+Sat, 28 Nov 2015 23:24:53 server.py[line:144] INFO accepted 127.0.0.1:59672
+Sat, 28 Nov 2015 23:24:53 server.py[line:191] INFO welcome [127.0.0.1]:59672
+Sat, 28 Nov 2015 23:24:53 rpc.py[line:25] INFO Slave registered whith id Slave-4
+Sat, 28 Nov 2015 23:24:54 rpc.py[line:41] INFO Received heartbeat from slave Slave-4 : {'mem_used': '7381MB', 'mem_percent': '65.9%', 'cpu': '11.9%', 'mem_total': '8192MB'}
+Sat, 28 Nov 2015 23:25:00 rpc.py[line:41] INFO Received heartbeat from slave Slave-4 : {'mem_used': '7376MB', 'mem_percent': '66.4%', 'cpu': '8.4%', 'mem_total': '8192MB'}
+Sat, 28 Nov 2015 23:25:03 rpc.py[line:34] INFO [Slave-4] lost connection.
+Sat, 28 Nov 2015 23:25:03 server.py[line:200] INFO goodbye [127.0.0.1]:59672
+Sat, 28 Nov 2015 23:25:04 server.py[line:246] WARNING keyboard interrupt!
+Sat, 28 Nov 2015 23:25:04 server.py[line:248] INFO server has terminated
+Sat, 28 Nov 2015 23:25:04 server.py[line:111] INFO listener closed

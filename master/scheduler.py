@@ -58,26 +58,14 @@ def error(msg):
 
 if __name__ == "__main__":
     parser = OptionParser(usage="Usage: %prog [options]")
-    parser.add_option("-m", "--mq", help="address of message queue", dest="mq")
-    parser.add_option("-d", "--db", help="address of database", dest="db")
     parser.add_option("-s", "--start_url", help="start url of task", dest="start_url")
     parser.add_option("-a", "--allowed_domain", help="allowed url", dest="allowed_url")
 
     (options, args) = parser.parse_args()
 
-    (redis_host, redis_port) = options.mq.split(':')
-
-    (db_host, splits) = options.db.split(':')
-    (db_port, db_name) = splits.split('/')
-
     task = {
-        "redis_host": redis_host,
-        "redis_port": redis_port,
         "start_url": options.start_url,
         "allowed_domain": options.allowed_url,
-        "db_host": db_host,
-        "db_port": db_port,
-        "db_name": db_name
     }
 
     task = init_task(task)

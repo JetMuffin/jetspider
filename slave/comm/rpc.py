@@ -9,13 +9,24 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(mess
 
 class SlaveRPC:
     # TODO read from configuration file
-    def __init__(self, name="unknown", ip="127.0.0.1", port=9999):
-        self.name = name
+    def __init__(self, ip="127.0.0.1", port=8781):
         self.connection = rpyc.connect(ip, port)
         self.server = self.connection.root
         logging.info("Connecting master at %s:%s..." % (ip, port))
 
-    def heartbeat(self, interval=3):
+    def register(self, slave):
+        if self.server.register(slave['name'], slave):
+            logging.info("Register to master with name %s successful." % slave['name'])
+            return True
+        else:
+            logging.info("Slave name %s has been used, please change another one." % slave['name'])
+            return False
+
+    def disconnect(self, slave):
+        self.server.disconnect(slave['name'])
+        logging.info("Disconnect from master...")
+
+    def heartbeat(self, slave, interval=3):
         while True:
             phymem = psutil.virtual_memory()
             state = {
@@ -24,14 +35,8 @@ class SlaveRPC:
                 "mem_total": str(int(phymem.total / 1024 / 1024)) + "MB",
                 "mem_percent": str(phymem.percent) + "%"
             }
-            self.server.heartbeat(self.name, state)
+            self.server.heartbeat(slave['name'], state)
             time.sleep(interval)
-
-    def monitor(self, interval=3):
-        """TODO fix bug"""
-        health_thread = threading.Thread(target=self.heartbeat())
-        health_thread.setDaemon(True)
-        health_thread.start()
 
     def close(self):
         self.connection.close()

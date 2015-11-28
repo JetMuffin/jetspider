@@ -26,11 +26,14 @@ class SlaveStorage(BaseStorage):
         self.server.set(key, str(value))
 
     def get(self, key):
-        return eval(self.server.get(key))
+        value = self.server.get(key)
+        if value:
+            return eval(value)
+        else:
+            return None
 
     def delete(self, key):
         self.server.delete(key)
 
     def delete_all(self):
         self.server.flushdb()
-
