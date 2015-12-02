@@ -11,10 +11,12 @@ from slave.spiders.crawlers import SimpleCrawler
 
 
 class Executor(object):
-    def __init__(self, master_address, name):
+    def __init__(self, master_address, name, task):
         self.master_address = master_address
         self.name = name
         self.master_ip, self.master_port = master_address.split(":")
+        self.rpc_proxy = SlaveRPC(self.master_ip, self.master_port)
+        self.task_info = task
 
     def run(self):
         raise NotImplementedError
@@ -32,13 +34,11 @@ class SpiderExecutor(Executor):
     # dupefilter: reduplicate fiter
     # pipeline: persistent volumn pipeline
     def fetch(self):
-
-        spider_queue = FIFOQueue(self.task_info['redis_host'], self.task_info['redis_port'], self.task_info['spider_queue_key'])
-        task_queue = FIFOQueue(self.task_info['redis_host'], self.task_info['redis_port'], self.task_info['parser_queue_key'])
+        spider_queue = FIFOQueue(host=self.task_info['redis_host'], port=self.task_info['redis_port'], key=self.task_info['spider_queue_key'])
+        task_queue = FIFOQueue(host=self.task_info['redis_host'], port=self.task_info['redis_port'], key=self.task_info['parser_queue_key'])
         crawler = SimpleCrawler(self.task_info['start_url'], self.task_info['allowed_domain'])
-        dupefilter = SimpleDupefilter(self.task_info['redis_host'], self.task_info['redis_port'], self.task_info['spider_dupefilter_key'])
+        dupefilter = SimpleDupefilter(host=self.task_info['redis_host'], port=self.task_info['redis_port'], key=self.task_info['spider_dupefilter_key'])
         pipeline = MongodbPipeline(self.task_info['db_host'], self.task_info['db_port'], self.task_info['db_name'])
-
         spider_queue.push(self.task_info['start_url'])
 
         # TODO shutdown signal

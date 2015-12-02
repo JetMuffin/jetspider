@@ -51,9 +51,13 @@ if __name__ == "__main__":
         try:
             # while True:
             #     rpc_proxy.heartbeat(slave, interval=5)
-            for i in server.ps.listen():
-                if i['type'] == 'message':
-                    print "Task get", i['data']
+            for msg in server.ps.listen():
+                if msg['type'] == 'message':
+                    print "Receive task: ", msg['data']
+                    task = eval(msg['data'])
+                    if(options.type == "spider"):
+                        executor = SpiderExecutor(options.master, options.name, task)
+                        executor.fetch()
 
         except KeyboardInterrupt:
             rpc_proxy.disconnect(slave)
