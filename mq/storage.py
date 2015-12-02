@@ -32,6 +32,13 @@ class SlaveStorage(BaseStorage):
         else:
             return None
 
+    def get_all(self):
+        values = []
+        for key in self.server.keys():
+            values.append(self.get(key))
+
+        return values
+
     def delete(self, key):
         self.server.delete(key)
 

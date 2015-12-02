@@ -5,7 +5,7 @@ import sys
 from comm.http import HttpClient
 from rpyc import Service
 from rpyc.utils.server import ThreadedServer
-
+from redis import Redis
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
@@ -18,10 +18,7 @@ formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 
-http = HttpClient()
-
 task = {}
-
 DEFAULT_TASK_INFO = {
     "master_addr": "127.0.0.1",
     "redis_host": "127.0.0.1",
@@ -37,10 +34,6 @@ DEFAULT_TASK_INFO = {
     "db_port": 27017,
     "db_name": "spider_db",
 }
-
-
-# class Scheduler(Service):
-
 
 
 def init_task(task):
@@ -69,4 +62,7 @@ if __name__ == "__main__":
     }
 
     task = init_task(task)
+    redis_server = Redis("127.0.0.1", "6379")
+    redis_server.publish("task",task)
+    
 

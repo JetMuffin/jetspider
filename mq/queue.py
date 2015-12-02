@@ -1,8 +1,7 @@
-import redis
-
+from redis import Redis
 
 class BaseQueue(object):
-    def __init__(self, key, host, port=6379, db=0):
+    def __init__(self, key, db, host, port=6379):
         """Redis task queue for spider
 
         :type key: object
@@ -11,7 +10,7 @@ class BaseQueue(object):
         :param key: key of redis queue
         """
         # TODO encode the url
-        self.server = redis.Redis(host, port, db)
+        self.server = Redis(host, port, db)
         self.key = key
 
     def __len__(self):
@@ -33,14 +32,48 @@ class BaseQueue(object):
 
 class FIFOQueue(BaseQueue):
     """FIFO queue"""
+    def __init__(self, key, host, db=2, port=6379):
+        self.server = Redis(host, port, db)
+        self.key = key
 
     def __len__(self):
         return self.server.llen(self.key)
 
-    def push(self, url):
-        self.server.lpush(self.key, url)
+    def push(self, value):
+        self.server.lpush(self.key, value)
 
     def pop(self):
         data = self.server.rpop(self.key)
         if data:
             return data
+
+class Subscribe(BaseQueue):
+    """ subscribe mode """
+
+    def __init__(self, key, host, db=1, port=6379):
+        self.server = Redis(host, port, db)
+        self.key = key
+        self.ps = self.server.pubsub()
+        self.ps.subscribe(self.key)
+
+
+class MessageQueue(BaseQueue):
+
+    def __init__(self, key, host, db=2, port=6379):
+        self.server = Redis(host, port, db)
+        self.key = key
+
+    def pop(self):
+        return self.server.blpop(self.key, 0)[0]
+
+    def push(self, value):
+        self.server.lpush(self.key, value)
+
+
+
+
+
+
+
+
+

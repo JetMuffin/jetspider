@@ -6,7 +6,6 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s', datefmt='%H:%M:%S')
 
-
 class SlaveRPC:
     # TODO read from configuration file
     def __init__(self, ip="127.0.0.1", port=8781):

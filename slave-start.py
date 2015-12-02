@@ -4,6 +4,7 @@ from optparse import OptionParser
 
 from slave.executors import SpiderExecutor, ParserExecutor
 from slave.comm.rpc import SlaveRPC
+from mq.queue import Subscribe
 
 SLAVE_TYPE = ["spider", "parser"]
 def error(msg):
@@ -44,10 +45,16 @@ if __name__ == "__main__":
     if rpc_proxy.register(slave):
 
         """ Monitor heartbeat """
-        # TODO 将monitor改为后台进程
+        # TODO debug monitor
+        server = Subscribe("task", "127.0.0.1")
+
         try:
-            while True:
-                rpc_proxy.heartbeat(slave, interval=5)
+            # while True:
+            #     rpc_proxy.heartbeat(slave, interval=5)
+            for i in server.ps.listen():
+                if i['type'] == 'message':
+                    print "Task get", i['data']
+
         except KeyboardInterrupt:
             rpc_proxy.disconnect(slave)
 
