@@ -63,8 +63,11 @@ class MessageQueue(BaseQueue):
         self.server = Redis(host, port, db)
         self.key = key
 
+    def __len__(self):
+        return self.server.llen(self.key)
+
     def pop(self):
-        return self.server.blpop(self.key, 0)[0]
+        return self.server.blpop(self.key, 0)[1]
 
     def push(self, value):
         self.server.lpush(self.key, value)

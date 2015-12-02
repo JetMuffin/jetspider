@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
     {% block content %}
-    <div class="container content-container">
+    <div class="container">
         <h3>Console</h3>
         <div class="row">
             <div class="com-md-12">
@@ -16,7 +16,6 @@
     <script>
     var ws = new WebSocket('ws://localhost:8000/soc');
     ws.onmessage = function(event) {
-        console.log(event);
         msg_to_display = document.createElement('p')
         msg_to_display.innerHTML = event.data
         console = document.getElementById('console')

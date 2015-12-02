@@ -4,6 +4,7 @@ import logging
 
 from mq.queue import MessageQueue
 from mq.storage import SlaveStorage
+import websocket
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -24,7 +25,7 @@ class MasterRPCService(Service):
         if (not slaves.get(slave_id)):
             slaves.set(slave_id, slave_info)
             logging.info("Slave registered with id %s" % slave_id)
-            message_queue.push("Slave registered with id %s" % slave_id)
+            ws.send("Slave registered with id %s" % slave_id)
             return True
         else:
             return False
@@ -34,7 +35,7 @@ class MasterRPCService(Service):
     def exposed_disconnect(self, slave_id):
         slaves.delete(slave_id)
         logging.info("[%s] lost connection." % slave_id)
-        message_queue.push("[%s] lost connection." % slave_id)
+        ws.send("[%s] lost connection." % slave_id)
 
     def exposed_heartbeat(self, slave_id, slave_state):
         slave_info = slaves.get(slave_id)
@@ -46,18 +47,19 @@ class MasterRPCService(Service):
 
     def exposed_message(self, slave_id, message):
         logging.info("[%s]: %s" % (slave_id, message))
+        ws.send("[%s]: %s" % (slave_id, message))
         # http.post("[%s]: %s" % (slave_id, message))
 
 
 class MasterRPC:
     def __init__(self, redis_host, redis_port=6379, slaves_db=3, port=8780, auto_register=False):
-        global slaves, message_queue
+        global slaves, ws
         slaves = SlaveStorage(slaves_db, redis_host, redis_port)
-        message_queue = MessageQueue(host=redis_host, key="message_queue")
+        ws = websocket.create_connection("ws://localhost:8000/soc")
         self.server = ThreadedServer(MasterRPCService, port=port, auto_register=auto_register)
 
         logging.info("Start master on port %d..." % port)
-        message_queue.push("Start master on port %d..." % port)
+        ws.send("Start master on port %d..." % port)
         # http.post("Start master on port %d..." % port)
 
         self.server.start()
